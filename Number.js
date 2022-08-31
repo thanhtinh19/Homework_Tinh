@@ -25,10 +25,10 @@ console.log(isIncreasingNumber(123,1))
 
 //Kiểm tra snt
 function isPrime(n){
-    s = Math.sqrt(n);
-    for (let i = 2; i <= s; i++)
+    if(n < 2) return false;
+    for (let i = 2; i <= Math.sqrt(n); i++)
         if (n%i == 0) return false;
-    return n > 1;
+    return true;
 }
 console.log(isPrime(4))
 console.log(isPrime(3))
@@ -52,7 +52,7 @@ function isPerfectNumber(n){
     for(let i = 1; i < n; i++){
         if(n%i == 0) sum += i;
     }
-    return sum == n ? true : false;
+    return sum === n
 }
 
 console.log(isPerfectNumber(5))
@@ -66,19 +66,17 @@ function isSymetricNumber(n){
     return false;
 }
 
-console.log(isSymetricNumber(1321))
+console.log(isSymetricNumber(132231))
 
 
 //kiểm tra số có tổng chữ số chia hết cho 10
 function isDivisibleBy10(n){
-    n = n.toString();
-    let a = n.split("");
-    const sum = a.reduce((pre, cur) => {
-        pre = Number(pre);
-        cur = Number(cur)
-        return pre + cur;
+    let a = n.toString().split("");
+    let sum = 0;
+    a.map((item) => {
+        sum += Number(item);
     });
-    return sum % 10 == 0 ? true : false;
+    return sum % 10 == 0;
 }
 
-console.log(isDivisibleBy10(12345))
+console.log(isDivisibleBy10(1234))
