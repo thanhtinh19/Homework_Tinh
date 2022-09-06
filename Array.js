@@ -6,7 +6,7 @@ function isIncreasingNumberList(numberList){
     }
     return true;
 }
-console.log(isIncreasingNumberList([1,1]))
+//console.log(isIncreasingNumberList([1,1]))
 
 
 //Kiểm tra mảng đối xứng
@@ -18,7 +18,7 @@ function isSymmetricList(numberList){
     }
     return true;
 }
-console.log(isSymmetricList([1, 2, 3, 2, 1]))
+//console.log(isSymmetricList([1, 2, 3, 2, 1]))
 
 
 //Kiểm tra mảng có số fibonacci nhỏ hơn 100
@@ -42,9 +42,9 @@ function hasFibonacciNumber(numberList){
     return numberList.some(element => arr.includes(element));
 }
 
-console.log(hasFibonacciNumber([4,6,7]))
-console.log(hasFibonacciNumber([0,1,2,3,4,5]))
-console.log(hasFibonacciNumber([89]))
+// console.log(hasFibonacciNumber([4,6,7]))
+// console.log(hasFibonacciNumber([0,1,2,3,4,5]))
+// console.log(hasFibonacciNumber([89]))
 
 
 //Tìm số lớn thứ hai trong mảng
@@ -53,7 +53,23 @@ function findSecondLargestNumber(numberList){
     return numberList[numberList.length-2]
 }
 
-console.log(findSecondLargestNumber([1,2,3,4]))
+function findSecondLargestNumber2(numberList){
+    let max = 0;
+    let max2 = 0;
+    for(let i = 0; i < numberList.length; i++){
+        if(numberList[i] < 0) return null;
+        if (numberList[i] > max) {
+            max2 = max;
+            max = numberList[i];
+        } else if (numberList[i] > max2 && numberList[i] < max) {
+            max2 = numberList[i];
+        }
+    }
+    return max2;
+}
+
+
+console.log(findSecondLargestNumber2([1,2,3,4,4]))
 
 
 //Tìm số chính phương cuối cùng trong mảng
@@ -73,7 +89,7 @@ function findLastPerfectSquare(numberList){
     }
 }
 
-console.log(findLastPerfectSquare([4,16,25,36,40]))
+//console.log(findLastPerfectSquare([4,16,25,36,40]))
 
 
 //Đếm số lượng các số có trong mảng a mà không có trong mảng b
@@ -85,7 +101,4 @@ function countNumbersNotInB(a,b){
     return count;
 }
 
-console.log(countNumbersNotInB([1,2,3],[3,4,5]))
-
-
-
+//console.log(countNumbersNotInB([1,2,3],[3,4,5]))

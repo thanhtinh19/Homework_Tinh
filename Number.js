@@ -1,14 +1,14 @@
 
 //Kiểm tra số tăng dần
 function isIncreasingNumber(n) {
-    let unit = n % 10;
-    n = n / 10;
     while (n >= 10) {
-        if (unit < n%10) return false;
+        let unit = n % 10;
+        n = n / 10;
+        if (unit < n%10)  return false; 
     }
     return true;
 }
-console.log(isIncreasingNumber(1234))
+console.log(isIncreasingNumber(13245))
 
 
 
@@ -20,7 +20,7 @@ function isIncreasingNumber(n,x) {
     }
     return true;
 }
-console.log(isIncreasingNumber(123,1))
+//console.log(isIncreasingNumber(123,1))
 
 
 //Kiểm tra snt
@@ -30,8 +30,8 @@ function isPrime(n){
         if (n%i == 0) return false;
     return true;
 }
-console.log(isPrime(4))
-console.log(isPrime(3))
+// console.log(isPrime(4))
+// console.log(isPrime(3))
 
 
 //kiểm tra số chính phương
@@ -40,9 +40,9 @@ function isPerfectSquare(n) {
     return Math.sqrt(n) % 1 == 0 ? true : false;
 }
 
-console.log(isPerfectSquare(144))
-console.log(isPerfectSquare(5))
-console.log(isPerfectSquare(36))
+// console.log(isPerfectSquare(144))
+// console.log(isPerfectSquare(5))
+// console.log(isPerfectSquare(36))
 
 
 
@@ -55,18 +55,17 @@ function isPerfectNumber(n){
     return sum === n
 }
 
-console.log(isPerfectNumber(5))
+// console.log(isPerfectNumber(5))
 
 
 //kiểm tra số đối xứng
 function isSymetricNumber(n){
     n = n.toString();
-    let a = Number(n.split("").reverse().join(""));
-    if(n == a) return true;
-    return false;
+    let a = n.split("").reverse().join("");
+    return n === a;
 }
 
-console.log(isSymetricNumber(132231))
+// console.log(isSymetricNumber(1322311))
 
 
 //kiểm tra số có tổng chữ số chia hết cho 10
@@ -79,4 +78,4 @@ function isDivisibleBy10(n){
     return sum % 10 == 0;
 }
 
-console.log(isDivisibleBy10(1234))
+// console.log(isDivisibleBy10(1234))
