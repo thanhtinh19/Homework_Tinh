@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce + Throttle</title>
+</head>
+<body>
+    <input type="text" />
+    <div id="default"> Default: </div>
+    <div id="debounce">Debounce: </div>
+    <div id="throttle">Throttle: </div>
+</body>
+<script>  
+    input = document.querySelector('input');
+    defaultText = document.getElementById('default');
+    debounceText = document.getElementById('debounce');
+    throttleText = document.getElementById('throttle');
+
+
+    input.addEventListener("input", e => {
+        const textContent = e.target.value;
+        //console.log("Default: " + textContent)
+        defaultText.textContent = "Default:" + textContent;
+        updateDebounceText(textContent);
+        updateThrottleText(textContent);   
+    })
+
+
+    //debounce
+    function debounce(cb, delay){
+        let timer;
+        return (...args) => {
+            if(timer){
+                clearTimeout(timer);
+            }
+            timer = setTimeout(() => cb(...args), delay);
+        };
+    }
+    const updateDebounceText = debounce(text => {
+        console.log("Debounce: ",text);
+        debounceText.textContent = "Debounce:" + text;
+    }, 2000);
+
+    //throttle
+    function throttle(cb, delay){
+        let last = 0;
+        return (...args) => {
+            const now = new Date().getTime();
+            if(now-last < delay){
+                return;
+            }
+            last = now;
+            cb(...args);
+        }
+    }
+    const updateThrottleText = throttle(text => {
+        console.log("Throttle: ",text);
+        throttleText.textContent ="Throttle:" + text;
+    }, 500);
+
+</script>
+</html>

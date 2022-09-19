@@ -2,7 +2,7 @@
 //findIndex
 function myFindIndex(myArray, elementToLookFor) {
     for (let i = 0; i < myArray.length; i++) {
-        if (myArray[i] === elementToLookFor) return i + 1;
+        if (myArray[i] === elementToLookFor) return i;
     }
     return -1;
 }
@@ -27,12 +27,12 @@ function myMap(myArray, callback) {
 
 //reduce
 function myReduce(myArray, callback, initialValue) {
-    let i = 0;
+    let index = 0;
     if (myArray.length < 2) {
-        i = 1;
+        index = 1;
         initialValue = myArray[0];
     }
-    for (; i < myArray.length; i++) {
+    for (let i = 0; i < myArray.length; i++) {
         initialValue = callback(initialValue, myArray[i], i, myArray);
     }
     return initialValue;
@@ -58,11 +58,10 @@ function myEvery(myArray, callback) {
 //sort
 
 function mySort(myArray, callback) {
-    let temp;
     for (let i = 0; i < myArray.length - 1; i++) {
         for (let j = i + 1; j < myArray.length; j++) {
             if (callback(myArray[j], myArray[i]) < 0) {
-                temp = myArray[i];
+                let temp = myArray[i];
                 myArray[i] = myArray[j];
                 myArray[j] = temp;
             }
@@ -91,4 +90,4 @@ function myFlat(myArray, depth) {
     return result;
 }
 
-console.log(myFlat([1, [2], [3, [[[4]]]], 3], 2))
+console.log(myFlat([1, [2], [3, [[[4]]]], 3], Infinity))
