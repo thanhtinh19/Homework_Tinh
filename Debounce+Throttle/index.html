@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Debounce + Throttle</title>
+    <title>Document</title>
 </head>
 <body>
     <input type="text" />
-    <div id="default"> Default: </div>
-    <div id="debounce">Debounce: </div>
-    <div id="throttle">Throttle: </div>
+    <div>  Default: <span id="default"></span></div>
+    <div>  Debounce: <span id="debounce"></span></div>
+    <div>  Throttle: <span id="throttle"></span></div>
 </body>
 <script>  
     input = document.querySelector('input');
@@ -21,10 +21,10 @@
 
     input.addEventListener("input", e => {
         const textContent = e.target.value;
-        //console.log("Default: " + textContent)
-        defaultText.textContent = "Default:" + textContent;
+        console.log("Default: " + textContent)
+        defaultText.textContent = textContent;
         updateDebounceText(textContent);
-        updateThrottleText(textContent);   
+        updateThrottleText(textContent);
     })
 
 
@@ -40,8 +40,8 @@
     }
     const updateDebounceText = debounce(text => {
         console.log("Debounce: ",text);
-        debounceText.textContent = "Debounce:" + text;
-    }, 2000);
+        debounceText.textContent = text;
+    },1000);
 
     //throttle
     function throttle(cb, delay){
@@ -57,7 +57,7 @@
     }
     const updateThrottleText = throttle(text => {
         console.log("Throttle: ",text);
-        throttleText.textContent ="Throttle:" + text;
+        throttleText.textContent = text;
     }, 500);
 
 </script>
